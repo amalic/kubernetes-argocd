@@ -8,8 +8,7 @@ minikube start
 kubectl create ns argocd
 kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
 echo "waiting for argocd-server"
-sleep 5
-kubectl -n argocd wait --for=condition=ready pod -l app.kubernetes.io/name=argocd-server
+while [[ $(kubectl -n argocd get pods -l app.kubernetes.io/name=argocd-server -o 'jsonpath={..status.conditions[?(@.type=="Ready")].status}') != "True" ]]; do echo "waiting for argocd-server" && sleep 1; done
 PASSWORD=$(kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d; echo -n)
 echo "\nvisit http://localhost:8080"
 echo "user:     admin"
