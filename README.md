@@ -15,3 +15,13 @@ echo "user:     admin"
 echo "password: $PASSWORD\n"
 kubectl port-forward svc/argocd-server -n argocd 8080:443
 ```
+
+Those can be run individually by following the readme in each subfolder, or all together by following theses seps:
+- Add this repository to ArgoCD
+- Create a new App called `my-app`
+  - select automatic deployment
+  - select this repository
+  - enter `.` as path
+  - select the kubernetes cluster
+  - enter `default` as namespace
+  - check the recursive checkbox at the bottom
