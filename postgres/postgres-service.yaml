@@ -4,6 +4,7 @@ metadata:
   name: postgres # Sets service name
   labels:
     app: postgres # Labels and Selectors
+  namespace: postgres
 spec:
   type: NodePort # Sets service type
   ports:

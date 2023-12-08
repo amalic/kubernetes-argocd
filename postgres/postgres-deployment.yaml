@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: postgres  # Sets Deployment name
+  namespace: postgres
 spec:
   replicas: 1
   selector:
@@ -11,6 +12,7 @@ spec:
     metadata:
       labels:
         app: postgres
+      namespace: postgres
     spec:
       containers:
         - name: postgres

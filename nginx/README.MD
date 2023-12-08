@@ -5,4 +5,4 @@ Howto
   - select this repository
   - enter `nginx` as path
   - select the kubernetes cluster
-  - enter devault as namespace
+  - enter `nginx` as namespace

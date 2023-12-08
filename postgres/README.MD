@@ -5,6 +5,6 @@ Howto:
   - select this repository
   - enter `postgres` as path
   - select the kubernetes cluster
-  - enter devault as namespace
+  - enter `postgres` as namespace
 
 from https://www.airplane.dev/blog/deploy-postgres-on-kubernetes
