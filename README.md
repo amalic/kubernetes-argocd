@@ -16,12 +16,40 @@ echo "password: $PASSWORD\n"
 kubectl port-forward svc/argocd-server -n argocd 8080:443
 ```
 
-Those can be run individually by following the readme in each subfolder, or all together by following theses seps:
-- Add this repository to ArgoCD
-- Create a new App called `my-app`
-  - select automatic deployment
-  - select this repository
-  - enter `.` as path
-  - select the kubernetes cluster
-  - enter `default` as namespace
-  - check the recursive checkbox at the bottom
+To run all examples in this project you can use this predefined yaml, after addnig this repository to Argo-CD's repositories.
+```yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: my-app
+spec:
+  destination:
+    name: ''
+    namespace: default
+    server: 'https://kubernetes.default.svc'
+  source:
+    path: .
+    repoURL: 'https://github.com/amalic/kubernetes-argocd'
+    targetRevision: HEAD
+    directory:
+      recurse: true
+  sources: []
+  project: default
+  syncPolicy:
+    automated:
+      prune: false
+      selfHeal: false
+project: default
+source:
+  repoURL: 'https://github.com/amalic/kubernetes-argocd'
+  path: .
+  targetRevision: HEAD
+  directory:
+    recurse: true
+    jsonnet: {}
+destination:
+  server: 'https://kubernetes.default.svc'
+  namespace: default
+syncPolicy:
+  automated: {}
+```

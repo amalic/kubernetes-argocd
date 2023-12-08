@@ -1,10 +1,22 @@
-Howto
-- Add this repository to ArgoCD
-- Create a new App called `hasura`
-  - select automatic deployment
-  - select this repository
-  - enter `hasura` as path
-  - select the kubernetes cluster
-  - enter `hasura` as namespace
-- port-forward ther service `kubectl port-forward svc/hasura -n hasura 8081:80`
-- go to [http://localhost:8081](http://localhost:8081)
+To run Hasura you can use this predefined yaml, after addnig this repository to Argo-CD's repositories.
+```yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: hasura
+spec:
+  destination:
+    name: ''
+    namespace: hasura
+    server: 'https://kubernetes.default.svc'
+  source:
+    path: hasura
+    repoURL: 'https://github.com/amalic/kubernetes-argocd'
+    targetRevision: HEAD
+  sources: []
+  project: default
+  syncPolicy:
+    automated:
+      prune: false
+      selfHeal: false
+```
