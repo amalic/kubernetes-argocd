@@ -1,8 +1,8 @@
 This is a simple nginx application to demonstarte working with argocd ([readthedocs](https://argo-cd.readthedocs.io/en/stable/)).
 
-[Tutorial](https://medium.com/@mehmetodabashi/installing-argocd-on-minikube-and-deploying-a-test-application-caa68ec55fbf)
+Inspired by this [Tutorial](https://medium.com/@mehmetodabashi/installing-argocd-on-minikube-and-deploying-a-test-application-caa68ec55fbf)
 
-Script:
+Script to launch Minikube with ArgoCD:
 ```bash
 minikube start
 kubectl create ns argocd

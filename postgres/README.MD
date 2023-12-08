@@ -1,0 +1,8 @@
+Howto:
+- Add this repository to ArgoCD
+- Create a new App called `postgres`
+  - select automatic deployment
+  - select this repository
+  - enter `postgres` as path
+  - select the kubernetes cluster
+  - enter devault as namespace
